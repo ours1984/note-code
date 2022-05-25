@@ -2,3 +2,7 @@
 	path = glfw
 	url = https://github.com/glfw/glfw.git
 	branch = master
+[submodule "googletest"]
+	path = googletest
+	url = https://github.com/google/googletest.git
+	branch = v1.10.x

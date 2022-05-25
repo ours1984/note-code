@@ -1,19 +1,25 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
-#include <iostream>
 
-void framebuffer_size_callback(GLFWwindow* window, int width, int height)
+#include "test_util.h"
+
+class TestWindow:public TestUtil
 {
-    glViewport(0, 0, width, height);
-}
+public:
 
-void processInput(GLFWwindow *window)
-{
-    if(glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
-        glfwSetWindowShouldClose(window, true);
-}
+    static void framebuffer_size_callback(GLFWwindow* window, int width, int height)
+    {
+        glViewport(0, 0, width, height);
+    }
 
-int main()
+    void processInput(GLFWwindow *window)
+    {
+        if(glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
+            glfwSetWindowShouldClose(window, true);
+    }
+};
+
+TEST_F(TestWindow, test_display)
 {
     glfwInit();
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
@@ -24,9 +30,9 @@ int main()
     GLFWwindow* window = glfwCreateWindow(800, 600, "LearnOpenGL", NULL, NULL);
     if (window == NULL)
     {
-        std::cout << "Failed to create GLFW window" << std::endl;
         glfwTerminate();
-        return -1;
+        ASSERT_TRUE(0)<<"Failed to create GLFW window";
+        return ;
     }
     glfwMakeContextCurrent(window);
     glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
@@ -35,13 +41,14 @@ int main()
     // ---------------------------------------
     if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
     {
-        std::cout << "Failed to initialize GLAD" << std::endl;
-        return -1;
+        ASSERT_TRUE(0)<<"Failed to initialize GLAD";
+        return ;
     } 
 
-    while(!glfwWindowShouldClose(window))
+    int i=0;
+    while(!glfwWindowShouldClose(window)&&i++<100)
     {
-        processInput(window);
+        this->processInput(window);
 
         // 渲染指令
         glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
@@ -52,5 +59,4 @@ int main()
     }
 
     glfwTerminate();
-    return 0;
 }
