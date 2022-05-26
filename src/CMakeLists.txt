@@ -5,6 +5,7 @@ add_executable(${PROJECT_NAME}
     main.cpp
     test_util.cpp
     test_window.cpp
+    test_triangle.cpp
 )
 
 target_link_libraries(${PROJECT_NAME} ${dependLib})
