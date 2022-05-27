@@ -18,6 +18,9 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${nodeOutDir})
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${nodeOutDir})
 set(LIBRARY_OUTPUT_PATH ${nodeOutDir})
 
+set(CMAKE_DEBUG_POSTFIX "_d")    
+set(CMAKE_RELEASE_POSTFIX "_r") 
+
 add_subdirectory(googletest)
 add_subdirectory(glfw)
 add_subdirectory(glad)

@@ -17,7 +17,7 @@ public:
     }
 };
 
-TEST_F(TestWindow, test_display1)
+TEST_F(TestWindow, windows)
 {
     auto fn=[&](int frame)
     {
@@ -25,5 +25,5 @@ TEST_F(TestWindow, test_display1)
         glClear(GL_COLOR_BUFFER_BIT);
     };
 
-    PlayWindow(fn,120);
+    PlayWindow(fn,50);
 }
