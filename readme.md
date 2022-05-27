@@ -41,6 +41,7 @@ window和linux和mac都可以.笔者使用vscode环境,在windows上搭配mingw�
 - src: 每一个文件应对[opengl-note](https://github.com/xiaoqide/opengl-note)的一篇教程
   - [test_window(github)](src/test_window.cpp): [从零开始画窗口(blog)](https://blog.ours1984.top/posts/opengl-window)
   - [test_triangle(github)](src/test_triangle.cpp): [从零开始画三角形(blog)](https://blog.ours1984.top/posts/opengl-triangle)
+  - [test_shader(github)](src/test_shader.cpp): [从零开始学shader(blog)](https://blog.ours1984.top/posts/opengl-shader)
 
 ## 贡献
 
