@@ -1,5 +1,5 @@
 #include <glad/glad.h>
-#include "test_util.h"
+#include "utils/TestUtil.h"
 
 class TestTriangle:public TestUtil
 {
@@ -199,7 +199,7 @@ TEST_F(TestTriangle, test_vbo)
         glDrawArrays(GL_TRIANGLES, 0, 3);
     };
 
-    PlayWindow(fn,200);
+    PlayWindow(fn,20);
 
     glDeleteVertexArrays(1, &VAO);
     glDeleteBuffers(1, &VBO);
@@ -226,7 +226,7 @@ TEST_F(TestTriangle, test_ibo)
         glBindVertexArray(0);
     };
 
-    PlayWindow(fn,200);
+    PlayWindow(fn,20);
 
     glDeleteVertexArrays(1, &VAO);
     glDeleteBuffers(1, &VBO);
@@ -251,7 +251,7 @@ TEST_F(TestTriangle, test_2triangle)
         glDrawArrays(GL_TRIANGLES, 0, 6);
     };
 
-    PlayWindow(fn,200);
+    PlayWindow(fn,20);
 
     glDeleteVertexArrays(1, &VAO);
     glDeleteBuffers(1, &VBO);
@@ -275,7 +275,7 @@ TEST_F(TestTriangle, test_2vao)
         glDrawArrays(GL_TRIANGLES, 0, 3);
     };
 
-    PlayWindow(fn,200);
+    PlayWindow(fn,20);
 
     glDeleteVertexArrays(2, VAOs);
     glDeleteBuffers(2, VBOs);
@@ -303,7 +303,7 @@ TEST_F(TestTriangle, test_2prog)
         glDrawArrays(GL_TRIANGLES, 0, 3);	// this call should output a yellow triangle
     };
 
-    PlayWindow(fn,200);
+    PlayWindow(fn,20);
 
     glDeleteVertexArrays(2, VAOs);
     glDeleteBuffers(2, VBOs);

@@ -1,14 +1,9 @@
 
-#include "test_util.h"
+#include "utils/TestUtil.h"
 
 class TestWindow:public TestUtil
 {
 public:
-
-    void OnResize(int width, int height)override
-    {
-        glViewport(0, 0, width, height);
-    }
 
     void _processInput(GLFWwindow *window)override
     {
@@ -25,5 +20,5 @@ TEST_F(TestWindow, windows)
         glClear(GL_COLOR_BUFFER_BIT);
     };
 
-    PlayWindow(fn,50);
+    PlayWindow(fn,10);
 }

@@ -1,6 +1,6 @@
 #include <glad/glad.h>
-#include "test_util.h"
-#include "shader/shader.h"
+#include "utils/TestUtil.h"
+#include "program/shader.h"
 #include <cmath>
 
 class TestShader:public TestUtil
@@ -140,9 +140,9 @@ TEST_F(TestShader, uniform)
     int shaderProgram = GetProgram0();
     auto fn=[&](int frame)
     {
+        glUseProgram(shaderProgram);
         // update shader uniform
-        double  timeValue = glfwGetTime();
-        float greenValue = static_cast<float>(sin(timeValue) / 2.0 + 0.5);
+        float greenValue = static_cast<float>(sin(frame) / 2.0 + 0.5);
         int vertexColorLocation = glGetUniformLocation(shaderProgram, "ourColor");
         glUniform4f(vertexColorLocation, 0.0f, greenValue, 0.0f, 1.0f);
 
@@ -150,7 +150,7 @@ TEST_F(TestShader, uniform)
         glDrawArrays(GL_TRIANGLES, 0, 3);
     };
 
-    PlayWindow(fn,200);
+    PlayWindow(fn,20);
 
     glDeleteVertexArrays(1, &VAO);
     glDeleteBuffers(1, &VBO);
@@ -169,12 +169,13 @@ TEST_F(TestShader, atribute)
     int shaderProgram = GetProgram1();
     auto fn=[&](int frame)
     {
+        glUseProgram(shaderProgram);
         // render the triangle
         glBindVertexArray(VAO);
         glDrawArrays(GL_TRIANGLES, 0, 3);
     };
 
-    PlayWindow(fn,200);
+    PlayWindow(fn,20);
 
     glDeleteVertexArrays(1, &VAO);
     glDeleteBuffers(1, &VBO);
@@ -192,7 +193,7 @@ TEST_F(TestShader, shader)
 
     // build and compile our shader program
     // ------------------------------------
-    Shader ourShader("glsl/test_shader/shader.vs", "glsl/test_shader/shader.fs"); // you can name your shader files however you like
+    Shader ourShader("driver/test_shader/shader.vs", "driver/test_shader/shader.fs"); // you can name your shader files however you like
 
     auto fn=[&](int frame)
     {
@@ -201,7 +202,7 @@ TEST_F(TestShader, shader)
         glDrawArrays(GL_TRIANGLES, 0, 3);
     };
 
-    PlayWindow(fn,200);
+    PlayWindow(fn,20);
 
     glDeleteVertexArrays(1, &VAO);
     glDeleteBuffers(1, &VBO);
@@ -219,7 +220,7 @@ TEST_F(TestShader, upsidedown)
 
     // build and compile our shader program
     // ------------------------------------
-    Shader ourShader("glsl/test_shader/upsidedown.vs", "glsl/test_shader/shader.fs"); // you can name your shader files however you like
+    Shader ourShader("driver/test_shader/upsidedown.vs", "driver/test_shader/shader.fs"); // you can name your shader files however you like
 
     auto fn=[&](int frame)
     {
@@ -228,7 +229,7 @@ TEST_F(TestShader, upsidedown)
         glDrawArrays(GL_TRIANGLES, 0, 3);
     };
 
-    PlayWindow(fn,200);
+    PlayWindow(fn,20);
 
     glDeleteVertexArrays(1, &VAO);
     glDeleteBuffers(1, &VBO);
@@ -246,7 +247,7 @@ TEST_F(TestShader, bias)
 
     // build and compile our shader program
     // ------------------------------------
-    Shader ourShader("glsl/test_shader/bias.vs", "glsl/test_shader/shader.fs"); // you can name your shader files however you like
+    Shader ourShader("driver/test_shader/bias.vs", "driver/test_shader/shader.fs"); // you can name your shader files however you like
 
     auto fn=[&](int frame)
     {
@@ -258,7 +259,7 @@ TEST_F(TestShader, bias)
         glDrawArrays(GL_TRIANGLES, 0, 3);
     };
 
-    PlayWindow(fn,200);
+    PlayWindow(fn,20);
 
     glDeleteVertexArrays(1, &VAO);
     glDeleteBuffers(1, &VBO);
@@ -276,7 +277,7 @@ TEST_F(TestShader, inout)
 
     // build and compile our shader program
     // ------------------------------------
-    Shader ourShader("glsl/test_shader/inout.vs", "glsl/test_shader/inout.fs"); // you can name your shader files however you like
+    Shader ourShader("driver/test_shader/inout.vs", "driver/test_shader/inout.fs"); // you can name your shader files however you like
 
     auto fn=[&](int frame)
     {
@@ -285,7 +286,7 @@ TEST_F(TestShader, inout)
         glDrawArrays(GL_TRIANGLES, 0, 3);
     };
 
-    PlayWindow(fn,200);
+    PlayWindow(fn,20);
 
     glDeleteVertexArrays(1, &VAO);
     glDeleteBuffers(1, &VBO);

@@ -2,7 +2,7 @@
 
 #include <gtest/gtest.h>
 #include <GLFW/glfw3.h>
-
+#include "camera/camera.h"
 #include <functional>
 
 class TestUtil : public testing::Test
@@ -19,15 +19,17 @@ public:
     using renderFn=std::function<void(int)>;
     void PlayWindow( renderFn cb,int maxCycle = 0);
 
-    virtual void OnResize(int width,int height);
-
 protected:
 
     virtual void _processInput(GLFWwindow*);
 
-    virtual void _beforeRender();
+    Camera m_camera;
 
-    virtual void _afterRender();
+    GLFWwindow* m_window=nullptr;
+
+    // timing
+    float deltaTime = 0.0f;	// time between current frame and last frame
+    float lastFrame = 0.0f;
 
 };
 
