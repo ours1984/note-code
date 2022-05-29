@@ -1,17 +1,15 @@
 cmake_minimum_required(VERSION 3.0.0)
-project(opengl-note VERSION 0.1.0)
-
 set(CMAKE_CXX_STANDARD 11)
 
-set(nodeOutDir ${PROJECT_SOURCE_DIR}/bin)
-set(gladIncDir ${PROJECT_SOURCE_DIR}/glad)
-set(gtestIncDir ${PROJECT_SOURCE_DIR}/googletest/googletest/include)
-set(glfwIncDir ${PROJECT_SOURCE_DIR}/glfw/include)
+# set dir
+set(nodeOutDir ${CMAKE_CURRENT_SOURCE_DIR}/bin)
 
-include_directories(${gladIncDir})
-include_directories(${glfwIncDir})
-include_directories(${gtestIncDir})
-link_directories(${nodeOutDir})
+set(gladIncDir ${CMAKE_CURRENT_SOURCE_DIR}/third/glad)
+set(gtestIncDir ${CMAKE_CURRENT_SOURCE_DIR}/third/googletest/googletest/include)
+set(glfwIncDir ${CMAKE_CURRENT_SOURCE_DIR}/third/glfw/include)
+set(eigenIncDir ${CMAKE_CURRENT_SOURCE_DIR}/third/eigen/Eigen)
+set(stbIncDir ${CMAKE_CURRENT_SOURCE_DIR}/third/stb)
+set(glmIncDir ${CMAKE_CURRENT_SOURCE_DIR}/third/glm)
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${nodeOutDir})
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${nodeOutDir})
@@ -21,9 +19,21 @@ set(LIBRARY_OUTPUT_PATH ${nodeOutDir})
 set(CMAKE_DEBUG_POSTFIX "_d")    
 set(CMAKE_RELEASE_POSTFIX "_r") 
 
-add_subdirectory(googletest)
-add_subdirectory(glfw)
-add_subdirectory(glad)
+# inc/link dir
+include_directories(${glmIncDir})
+include_directories(${gladIncDir})
+include_directories(${glfwIncDir})
+include_directories(${gtestIncDir})
+include_directories(${stbIncDir})
+include_directories(${eigenIncDir})
+
+link_directories(${nodeOutDir})
+
+
+# add project
+add_subdirectory(third/googletest)
+add_subdirectory(third/glfw)
+add_subdirectory(third/glad)
 
 set (dependLib
     glfw
@@ -31,7 +41,7 @@ set (dependLib
     gtest
     -lopengl32
 )
-add_subdirectory(src)
+add_subdirectory(opengl-note)
 
 #enable_testing()
 #include(googletest)
