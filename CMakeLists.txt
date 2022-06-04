@@ -10,6 +10,7 @@ set(glfwIncDir ${CMAKE_CURRENT_SOURCE_DIR}/third/glfw/include)
 set(eigenIncDir ${CMAKE_CURRENT_SOURCE_DIR}/third/eigen/Eigen)
 set(stbIncDir ${CMAKE_CURRENT_SOURCE_DIR}/third/stb)
 set(glmIncDir ${CMAKE_CURRENT_SOURCE_DIR}/third/glm)
+set(benchIncDir ${CMAKE_CURRENT_SOURCE_DIR}/third/benchmark/include)
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${nodeOutDir})
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${nodeOutDir})
@@ -31,18 +32,23 @@ link_directories(${nodeOutDir})
 
 
 # add project
+set(BENCHMARK_ENABLE_TESTING  OFF)
 add_subdirectory(third/googletest)
 add_subdirectory(third/glfw)
 add_subdirectory(third/glad)
+add_subdirectory(third/benchmark)
 
 set (dependLib
     glfw
     glad
     gtest
+    benchmark
     -lpthread
     -lopengl32
 )
 add_subdirectory(opengl-note)
+add_subdirectory(grokking-note)
+add_subdirectory(games001-note)
 
 #enable_testing()
 #include(googletest)

@@ -6,7 +6,9 @@
 	path = third/glfw
 	url = https://github.com/glfw/glfw.git
 	branch = master
-	
+[submodule "third/benchmark"]
+	path = third/benchmark
+	url = https://github.com/google/benchmark.git	
 [submodule "third/glad"]
 	path = third/glad
 	url = https://github.com/xiaoqide/glad.git
