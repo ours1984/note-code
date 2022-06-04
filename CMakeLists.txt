@@ -48,7 +48,7 @@ set (dependLib
 )
 add_subdirectory(opengl-note)
 add_subdirectory(grokking-note)
-add_subdirectory(games001-note)
+#add_subdirectory(games101-note)
 
 #enable_testing()
 #include(googletest)
