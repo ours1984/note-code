@@ -1,8 +1,8 @@
-# opengl-note-code
+# note-code
 
 ![badge](https://img.shields.io/badge/-GTest-yellow?style=flat&logo=google)![badge](https://img.shields.io/badge/-glfw-orij?style=flat&logo=woo)
-[![license](https://img.shields.io/github/license/xiaoqide/opengl-note-code.svg)](LICENSE)
-[![opengl-note-code](https://img.shields.io/badge/opengl-code-brightgreen.svg?style=flat-square)](https://github.com/xiaoqide/opengl-note-code)
+[![license](https://img.shields.io/github/license/xiaoqide/note-code.svg)](LICENSE)
+[![note-code](https://img.shields.io/badge/opengl-code-brightgreen.svg?style=flat-square)](https://github.com/xiaoqide/note-code)
 
 项目[opengl-note](https://github.com/xiaoqide/opengl-note)的配套代码
 
@@ -10,7 +10,7 @@
 
 ## 目录
 
-- [opengl-note-code](#opengl-note-code)
+- [note-code](#note-code)
   - [目录](#目录)
   - [背景](#背景)
   - [安装](#安装)
@@ -23,20 +23,22 @@
 
 ## 背景
 
-此仓库为以下两个学习笔记/教程的代码和资料
+此仓库为本人学习笔记/教程的代码和资料
 
 [![games101](https://github-readme-stats.vercel.app/api/pin/?username=xiaoqide&repo=opengl-note&show_owner)](https://github.com/xiaoqide/opengl-note)
 
 [![games101](https://github-readme-stats.vercel.app/api/pin/?username=xiaoqide&repo=games101-note&show_owner)](https://github.com/xiaoqide/games101-note)
 
-为了教程的纯粹性,把两个项目配套代码单独列出一个仓库
+[![games101](https://github-readme-stats.vercel.app/api/pin/?username=xiaoqide&repo=games101-note&show_owner)](https://github.com/xiaoqide/grokking-note)
+
+为了教程的纯粹性,把项目配套代码单独列出一个仓库
 
 ## 安装
 
 直接git克隆就可以了.注意到引用了googletest和glfw两个子仓库,所以按下面方式拉取代码
 
 ```bash
-git clone --recursive https://github.com/xiaoqide/opengl-note-code.git 
+git clone --recursive https://github.com/xiaoqide/note-code.git 
 ```
 
 window和linux和mac都可以.笔者使用vscode环境,在windows上搭配mingw编译
@@ -48,8 +50,11 @@ window和linux和mac都可以.笔者使用vscode环境,在windows上搭配mingw�
 ### doc
 
 - spec:  OpenGL规范相关文档
-- games101-ppt: games所有课程的ppt
-- games101-ppt: games所有作业要求
+- games101-assignment: games所有作业要求
+
+games101的ppt由于文件太大,单独开了一个仓库
+
+[![games101](https://github-readme-stats.vercel.app/api/pin/?username=xiaoqide&repo=games101-ppt&show_owner)](https://github.com/xiaoqide/games101-ppt)
 
 ### opengl-note
 
