@@ -39,6 +39,7 @@ set (dependLib
     glfw
     glad
     gtest
+    -lpthread
     -lopengl32
 )
 add_subdirectory(opengl-note)
