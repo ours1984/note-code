@@ -1,24 +1,10 @@
-[submodule "third/eigen"]
-	path = third/eigen
-	url = https://gitlab.com/libeigen/eigen.git
-
-[submodule "third/glfw"]
-	path = third/glfw
-	url = https://github.com/glfw/glfw.git
-	branch = master
 [submodule "third/benchmark"]
 	path = third/benchmark
 	url = https://github.com/google/benchmark.git	
-[submodule "third/glad"]
-	path = third/glad
-	url = https://github.com/xiaoqide/glad.git
-[submodule "third/googletest"]
-	path = third/googletest
-	url = https://github.com/google/googletest.git
-	branch = v1.10.x
+	
 [submodule "third/stb"]
 	path = third/stb
 	url = https://github.com/nothings/stb.git
-[submodule "third/glm"]
-	path = third/glm
-	url = https://github.com/g-truc/glm.git
+[submodule "third/softrender"]
+	path = third/softrender
+	url = https://github.com/xiaoqide/soft-render.git
