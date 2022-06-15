@@ -1,3 +1,0 @@
-import timeit
-
-timeit.timeit()

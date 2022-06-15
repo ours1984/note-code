@@ -13,6 +13,7 @@ set (dependLib
 
 add_executable(${dirname}
     introduction.cpp
+    sort.cpp
 )
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
