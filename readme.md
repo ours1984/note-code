@@ -69,31 +69,31 @@ games101的ppt由于文件太大,单独开了一个仓库
 
 从零开始学OpenGL系列教程配套代码,每一个文件对应[opengl-note](https://github.com/xiaoqide/opengl-note)的一篇文章
 
-- [test_window(github)](opengl-note/test_window.cpp): [从零开始画窗口(blog)](https://blog.ours1984.top/posts/opengl-window)
-- [test_triangle(github)](opengl-note/test_triangle.cpp): [从零开始画三角形(blog)](https://blog.ours1984.top/posts/opengl-triangle)
-- [test_shader(github)](opengl-note/test_shader.cpp): [从零开始写着色器(blog)](https://blog.ours1984.top/posts/opengl-shader)
-- [test_texture(github)](opengl-note/test_texture.cpp): [从零开始学纹理(blog)](https://blog.ours1984.top/posts/opengl-texture)
-- [test_MVP(github)](opengl-note/test_camera.cpp): [从零开始学MVP(blog)](https://blog.ours1984.top/posts/opengl-camera)
+- [test_window(github)](opengl-note/test_window.cpp): [从零开始画窗口(blog)](https://blog.ours1984.top/posts/opengl-window/)
+- [test_triangle(github)](opengl-note/test_triangle.cpp): [从零开始画三角形(blog)](https://blog.ours1984.top/posts/opengl-triangle/)
+- [test_shader(github)](opengl-note/test_shader.cpp): [从零开始写着色器(blog)](https://blog.ours1984.top/posts/opengl-shader/)
+- [test_texture(github)](opengl-note/test_texture.cpp): [从零开始学纹理(blog)](https://blog.ours1984.top/posts/opengl-texture/)
+- [test_MVP(github)](opengl-note/test_camera.cpp): [从零开始学MVP(blog)](https://blog.ours1984.top/posts/opengl-camera/)
 
 ### games101-note
 
 games101课程的作业解答,每一个文件对应[games101-note](https://github.com/xiaoqide/games101-note)的一篇文章
 
-- [Introduction(github)](games101-note/games101-01.md)：[看闫大神高屋建瓴(blog)](https://blog.ours1984.top/posts/games101-01)
-- [Linear Algebra(github)](games101-note/games101-02.md)：[看闫大神讲线性代数(blog)](https://blog.ours1984.top/posts/games101-02)
-- [Transformation(github)](games101-note/games101-03.md)：[看闫大神讲变形金刚(blog)](https://blog.ours1984.top/posts/games101-03)
-- [Transformation Cout(github)](games101-note/games101-04.md)：[看闫大神讲观测和投影(blog)](https://blog.ours1984.top/posts/games101-04)
+- [Introduction(github)](games101-note/games101-01.md)：[看闫大神高屋建瓴(blog)](https://blog.ours1984.top/posts/games101-01/)
+- [Linear Algebra(github)](games101-note/games101-02.md)：[看闫大神讲线性代数(blog)](https://blog.ours1984.top/posts/games101-02/)
+- [Transformation(github)](games101-note/games101-03.md)：[看闫大神讲变形金刚(blog)](https://blog.ours1984.top/posts/games101-03/)
+- [Transformation Cout(github)](games101-note/games101-04.md)：[看闫大神讲观测和投影(blog)](https://blog.ours1984.top/posts/games101-04/)
 
 ### grokking-note
 
 图解算法的代码练习,每一个文件对应[grokking-note](https://github.com/xiaoqide/grokking-note)的一篇文章
 
-- [search(github)](grokking-note/introduction.cpp)：[二分查找(blog)](https://blog.ours1984.top/posts/grokking-introduction)
-- [sort(github)](grokking-note/sort.cpp)：[选择排序(blog)](https://blog.ours1984.top/posts/grokking-select)
-- [Recursion(github)](grokking-note/grokking-recursion.md)：[递归(blog)](https://blog.ours1984.top/posts/grokking-recursion)
-- [Quick(github)](grokking-note/sort.cpp)：[快速排序(blog)](https://blog.ours1984.top/posts/grokking-quick)
-- [Map(github)](grokking-note/grokking-map.md)：[散列表(blog)](https://blog.ours1984.top/posts/grokking-map)
-- [BFS(github)](grokking-note/grokking-bfs.md)：[广度优先搜索(blog)](https://blog.ours1984.top/posts/grokking-bfs)
+- [search(github)](grokking-note/introduction.cpp)：[二分查找(blog)](https://blog.ours1984.top/posts/grokking-introduction/)
+- [sort(github)](grokking-note/sort.cpp)：[选择排序(blog)](https://blog.ours1984.top/posts/grokking-select/)
+- [Recursion(github)](grokking-note/grokking-recursion.md)：[递归(blog)](https://blog.ours1984.top/posts/grokking-recursion/)
+- [Quick(github)](grokking-note/sort.cpp)：[快速排序(blog)](https://blog.ours1984.top/posts/grokking-quick/)
+- [Map(github)](grokking-note/grokking-map.md)：[散列表(blog)](https://blog.ours1984.top/posts/grokking-map/)
+- [BFS(github)](grokking-note/grokking-bfs.md)：[广度优先搜索(blog)](https://blog.ours1984.top/posts/grokking-bfs/)
 
 ### third
 
