@@ -14,8 +14,6 @@ find_package(glfw3 REQUIRED)
 
 find_package(glm REQUIRED)
 
-find_package(benchmark REQUIRED)
-
 set (dependLib
     GTest::gtest
     glfw
