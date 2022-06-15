@@ -23,13 +23,10 @@ protected:
 
     virtual void _processInput(GLFWwindow*);
 
-    Camera m_camera;
-
-    GLFWwindow* m_window=nullptr;
-
     // timing
     float deltaTime = 0.0f;	// time between current frame and last frame
     float lastFrame = 0.0f;
+    Camera m_camera;
 
 };
 

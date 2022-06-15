@@ -4,6 +4,26 @@ cmake_path(GET CMAKE_CURRENT_SOURCE_DIR FILENAME dirname)
 
 project(${dirname} VERSION 0.1.0)
 
+find_package(GLEW REQUIRED)
+
+find_package(OpenGL REQUIRED)
+
+find_package(GTest REQUIRED)
+
+find_package(glfw3 REQUIRED)
+
+find_package(glm REQUIRED)
+
+find_package(benchmark REQUIRED)
+
+set (dependLib
+    GTest::gtest
+    glfw
+    GLEW::glew
+    ${OPENGL_LIBRARIES}
+    softrender
+)
+
 add_executable(${dirname}
     program/shader.h
     program/shader.cpp
@@ -22,10 +42,8 @@ add_executable(${dirname}
 )
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
-
 target_link_libraries(${dirname} ${dependLib})
 set_target_properties(${dirname} PROPERTIES DEBUG_POSTFIX "_d")
 set_target_properties(${dirname} PROPERTIES RELEASE_POSTFIX "_r")  
-
 
 file(COPY ${PROJECT_SOURCE_DIR}/driver DESTINATION ${nodeOutDir})

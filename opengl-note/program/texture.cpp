@@ -1,4 +1,4 @@
-#include <glad/glad.h>
+#include <softrender/glSoft.h>
 #include "texture.h"
 #include <string>
 

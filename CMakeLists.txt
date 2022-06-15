@@ -1,16 +1,18 @@
 cmake_minimum_required(VERSION 3.0.0)
-set(CMAKE_CXX_STANDARD 11)
+
+cmake_path(GET CMAKE_CURRENT_SOURCE_DIR FILENAME dirname)
+
+project(${dirname} VERSION 0.1.0)
+
+set(CMAKE_CXX_STANDARD 17)
+if (POLICY CMP0072)
+  set(OpenGL_GL_PREFERENCE LEGACY)
+endif()
 
 # set dir
 set(nodeOutDir ${CMAKE_CURRENT_SOURCE_DIR}/bin)
-
-set(gladIncDir ${CMAKE_CURRENT_SOURCE_DIR}/third/glad)
-set(gtestIncDir ${CMAKE_CURRENT_SOURCE_DIR}/third/googletest/googletest/include)
-set(glfwIncDir ${CMAKE_CURRENT_SOURCE_DIR}/third/glfw/include)
-set(eigenIncDir ${CMAKE_CURRENT_SOURCE_DIR}/third/eigen/Eigen)
 set(stbIncDir ${CMAKE_CURRENT_SOURCE_DIR}/third/stb)
-set(glmIncDir ${CMAKE_CURRENT_SOURCE_DIR}/third/glm)
-set(benchIncDir ${CMAKE_CURRENT_SOURCE_DIR}/third/benchmark/include)
+set(softIncDir ${CMAKE_CURRENT_SOURCE_DIR}/third/softrender/include)
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${nodeOutDir})
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${nodeOutDir})
@@ -21,31 +23,12 @@ set(CMAKE_DEBUG_POSTFIX "_d")
 set(CMAKE_RELEASE_POSTFIX "_r") 
 
 # inc/link dir
-include_directories(${glmIncDir})
-include_directories(${gladIncDir})
-include_directories(${glfwIncDir})
-include_directories(${gtestIncDir})
 include_directories(${stbIncDir})
-include_directories(${eigenIncDir})
-
+include_directories(${softIncDir})
 link_directories(${nodeOutDir})
 
-
 # add project
-set(BENCHMARK_ENABLE_TESTING  OFF)
-add_subdirectory(third/googletest)
-add_subdirectory(third/glfw)
-add_subdirectory(third/glad)
-add_subdirectory(third/benchmark)
-
-set (dependLib
-    glfw
-    glad
-    gtest
-    benchmark
-    -lpthread
-    -lopengl32
-)
+add_subdirectory(third/softrender)
 add_subdirectory(opengl-note)
 add_subdirectory(grokking-note)
 #add_subdirectory(games101-note)

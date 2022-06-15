@@ -1,4 +1,4 @@
-#include <glad/glad.h>
+#include <softrender/glSoft.h>
 #include "utils/TestUtil.h"
 
 class TestTriangle:public TestUtil

@@ -1,9 +1,17 @@
-#include <glad/glad.h>
+#include <softrender/glSoft.h>
 #include "TestUtil.h"
 #include <iostream>
 #include <map>
+#include "Func2Point.h"
+
+REGISTER_CALLBACK_CLASS(FSCBIND,void(GLFWwindow*,int,int));
+REGISTER_CALLBACK_CLASS(MCBIND,void(GLFWwindow*,double,double));
+REGISTER_CALLBACK_CLASS(SCBIND,void(GLFWwindow*,double,double));
+REGISTER_CALLBACK_CLASS(KCBIND,void(GLFWwindow*,int,int,int,int));
+REGISTER_CALLBACK_CLASS(MBCBIND,void(GLFWwindow*,int,int,int));
 
 using namespace std;
+static GLFWwindow* m_window=nullptr;
 
 /*****/
 void TestUtil::SetUpTestCase()
@@ -16,41 +24,34 @@ void TestUtil::TearDownTestCase()
 
 }
 
+
 /*****/
 void TestUtil::SetUp() // TEST跑之前会执行SetUp
 {
-    m_window = glfwCreateWindow(800, 600, "LearnOpenGL", NULL, NULL);
-    if (m_window == NULL)
-    {
-        glfwTerminate();
-        throw "Failed to create GLFW window;";
-    }
-    cout << "glfwCreateWindow" << endl;
+    FSCBIND::func = std::bind(&Camera::framebuffer_size_callback, &m_camera
+    , std::placeholders::_1, std::placeholders::_2,std::placeholders::_3);
+    glfwSetFramebufferSizeCallback(m_window,FSCBIND::callback);
 
-    glfwMakeContextCurrent(m_window);
-    glfwSetFramebufferSizeCallback(m_window, Camera::framebuffer_size_callback);
-    glfwSetCursorPosCallback(m_window, Camera::mouse_callback);
-    glfwSetScrollCallback(m_window, Camera::scroll_callback);
-    glfwSetKeyCallback(m_window,Camera::key_callback);
-    glfwSetMouseButtonCallback(m_window,Camera::mouse_button_callback);
+    MCBIND::func = std::bind(&Camera::mouse_callback, &m_camera
+        , std::placeholders::_1, std::placeholders::_2,std::placeholders::_3);
+    glfwSetCursorPosCallback(m_window,MCBIND::callback);
 
-    // tell GLFW to capture our mouse
-    //glfwSetInputMode(m_window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
-    m_camera.attachCurrentCamera(&m_camera);
+    SCBIND::func = std::bind(&Camera::scroll_callback, &m_camera
+    , std::placeholders::_1, std::placeholders::_2,std::placeholders::_3);
+    glfwSetScrollCallback(m_window,SCBIND::callback);
 
-    // glad: load all OpenGL function pointers
-    // ---------------------------------------
-    if (!gladLoadGL())
-    {
-        cout << "failed gladLoadGL" << endl;
-        throw "Failed to gladLoadGL";
-    }
+    KCBIND::func = std::bind(&Camera::key_callback, &m_camera
+    , std::placeholders::_1, std::placeholders::_2,std::placeholders::_3,std::placeholders::_4,std::placeholders::_5);
+    glfwSetKeyCallback(m_window,KCBIND::callback);
+
+    MBCBIND::func = std::bind(&Camera::mouse_button_callback, &m_camera
+    , std::placeholders::_1, std::placeholders::_2,std::placeholders::_3,std::placeholders::_4);
+    glfwSetMouseButtonCallback(m_window,MBCBIND::callback);
 }
 
 void TestUtil::TearDown() // TEST跑完之后会执行TearDown
 {
-    m_camera.attachCurrentCamera(nullptr);
-    glfwDestroyWindow(m_window);
+
 }
 
 void TestUtil::PlayWindow(renderFn cb,int maxCycle)
@@ -83,6 +84,8 @@ void TestUtil::_processInput(GLFWwindow* window)
 
 }
 
+
+
 /*****/
 void GlobalTest::SetUp()
 {
@@ -93,10 +96,31 @@ void GlobalTest::SetUp()
 #ifdef __APPLE__
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 #endif
+
+    m_window = glfwCreateWindow(800, 600, "LearnOpenGL", NULL, NULL);
+    if (m_window == NULL)
+    {
+        glfwTerminate();
+        throw "Failed to create GLFW window;";
+    }
+
+    glfwMakeContextCurrent(m_window);
+
+    // tell GLFW to capture our mouse
+    //glfwSetInputMode(m_window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+
+    // glad: load all OpenGL function pointers
+    // ---------------------------------------
+    if (!initRender())
+    {
+        cout << "failed initRender" << endl;
+        throw "Failed to initRender";
+    }
 }
 
 void GlobalTest::TearDown()
 {
+    glfwDestroyWindow(m_window);
     glfwTerminate();
 }
 

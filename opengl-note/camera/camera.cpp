@@ -1,13 +1,12 @@
-#include <glad/glad.h>
+#include <GL/glew.h>
 #include <glm/gtc/matrix_transform.hpp>
 #include "camera.h"
 #include <vector>
 
-Camera* Camera::s_currentCamera=nullptr;
 // constructor with vectors
 Camera::Camera()
 {
-    updateCameraVectors();
+    __updateCameraVectors();
 }
 
 // returns the view matrix calculated using Euler Angles and the LookAt Matrix
@@ -21,26 +20,19 @@ void Camera::framebuffer_size_callback(GLFWwindow* window, int width, int height
     // make sure the viewport matches the new window dimensions; note that width and 
     // height will be significantly larger than specified on retina displays.
     glViewport(0, 0, width, height);
-
-    if (s_currentCamera)
-    {
-        s_currentCamera->m_left=-width/2.0;
-        s_currentCamera->m_right=width/2.0;
-        s_currentCamera->m_bottom=-height/2.0;
-        s_currentCamera->m_top=-height/2.0;
-    }
+    m_left=-width/2.0;
+    m_right=width/2.0;
+    m_bottom=-height/2.0;
+    m_top=-height/2.0;
 }
 
 
-void Camera::mouse_button_callback(GLFWwindow* window, int button, int action, int mods)
+void Camera::mouse_button_callback(GLFWwindow* window, int but, int action, int mods)
 {
-    if (s_currentCamera)
-    {
-        if (action == GLFW_PRESS)
-            s_currentCamera->button[button]=true;
-        else if (action == GLFW_RELEASE)
-            s_currentCamera->button[button]=false;       
-    }
+    if (action == GLFW_PRESS)
+        button[but]=true;
+    else if (action == GLFW_RELEASE)
+        button[but]=false;       
 }
 
 void Camera::mouse_callback(GLFWwindow* window, double xposIn, double yposIn)
@@ -48,45 +40,36 @@ void Camera::mouse_callback(GLFWwindow* window, double xposIn, double yposIn)
     static bool firstMouse = false;
     static float lastX=0,lastY=0;
 
-    if (s_currentCamera)
+    float xpos = static_cast<float>(xposIn);
+    float ypos = static_cast<float>(yposIn);
+
+    if (firstMouse)
     {
-        float xpos = static_cast<float>(xposIn);
-        float ypos = static_cast<float>(yposIn);
-
-        if (firstMouse)
-        {
-            lastX = xpos;
-            lastY = ypos;
-            firstMouse = false;
-        }
-
-        float xoffset = xpos - lastX;
-        float yoffset = lastY - ypos; // reversed since y-coordinates go from bottom to top
-
         lastX = xpos;
         lastY = ypos;
-
-        s_currentCamera->ProcessMouseMovement(xoffset, yoffset);
+        firstMouse = false;
     }
+
+    float xoffset = xpos - lastX;
+    float yoffset = lastY - ypos; // reversed since y-coordinates go from bottom to top
+
+    lastX = xpos;
+    lastY = ypos;
+
+    _ProcessMouseMovement(xoffset, yoffset);
 }
 
 void Camera::scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
 {
-    if (s_currentCamera)
-    {
-        s_currentCamera->ProcessMouseScroll(static_cast<float>(yoffset));
-    }
+    _ProcessMouseScroll(static_cast<float>(yoffset));
 }
 
 void Camera::key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
 {
-    if (s_currentCamera)
-    {
-        if(action == GLFW_PRESS)
-            s_currentCamera->keys[key] = true;
-        else if(action == GLFW_RELEASE)
-            s_currentCamera->keys[key] = false;
-    }
+    if(action == GLFW_PRESS)
+        keys[key] = true;
+    else if(action == GLFW_RELEASE)
+        keys[key] = false;
 }
 
 // returns the view matrix calculated using Euler Angles and the LookAt Matrix
@@ -141,7 +124,7 @@ void Camera::ProcessKeyboard(float deltaTime)
     if (update)
     {
         // update Front, Right and Up Vectors using the updated Euler angles
-        updateCameraVectors();
+        __updateCameraVectors();
     }
     if (button[GLFW_MOUSE_BUTTON_RIGHT]||button[GLFW_MOUSE_BUTTON_MIDDLE])
     {
@@ -159,7 +142,7 @@ void Camera::ProcessKeyboard(float deltaTime)
 }
 
 // processes input received from a mouse input system. Expects the offset value in both the x and y direction.
-void Camera::ProcessMouseMovement(float xoffset, float yoffset, bool constrainPitch)
+void Camera::_ProcessMouseMovement(float xoffset, float yoffset, bool constrainPitch)
 {
     if (button[GLFW_MOUSE_BUTTON_RIGHT])
     {
@@ -177,7 +160,7 @@ void Camera::ProcessMouseMovement(float xoffset, float yoffset, bool constrainPi
             if (Pitch < -89.0f)
                 Pitch = -89.0f;
         }
-        updateCameraVectors();
+        __updateCameraVectors();
     }
     else if (button[GLFW_MOUSE_BUTTON_MIDDLE])
     {
@@ -188,13 +171,13 @@ void Camera::ProcessMouseMovement(float xoffset, float yoffset, bool constrainPi
         Position -= Up * yvelocity;
 
         // update Front, Right and Up Vectors using the updated Euler angles
-        updateCameraVectors();
+        __updateCameraVectors();
     }
 
 }
 
 // processes input received from a mouse scroll-wheel event. Only requires input on the vertical wheel-axis
-void Camera::ProcessMouseScroll(float yoffset)
+void Camera::_ProcessMouseScroll(float yoffset)
 {
     Zoom -= (float)yoffset;
     if (Zoom < 1.0f)
@@ -203,13 +186,8 @@ void Camera::ProcessMouseScroll(float yoffset)
         Zoom = 85.0f; 
 }
 
-void Camera::attachCurrentCamera(Camera* ca)
-{
-    s_currentCamera=ca;    
-}
-
 // calculates the front vector from the Camera's (updated) Euler Angles
-void Camera::updateCameraVectors()
+void Camera::__updateCameraVectors()
 {
     Front.x = -cos(glm::radians(Pitch))*sin(glm::radians(Yaw));
     Front.y = sin(glm::radians(Pitch));

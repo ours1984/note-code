@@ -1,4 +1,4 @@
-#include <glad/glad.h>
+#include <softrender/glSoft.h>
 #include "shader.h"
 #include <string>
 #include <fstream>

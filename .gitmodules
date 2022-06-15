@@ -1,10 +1,8 @@
-[submodule "third/benchmark"]
-	path = third/benchmark
-	url = https://github.com/google/benchmark.git	
-	
+
 [submodule "third/stb"]
 	path = third/stb
 	url = https://github.com/nothings/stb.git
+
 [submodule "third/softrender"]
 	path = third/softrender
 	url = https://github.com/xiaoqide/soft-render.git

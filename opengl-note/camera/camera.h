@@ -19,26 +19,22 @@ public:
     // processes input received from any keyboard-like input system. Accepts input parameter in the form of camera defined ENUM (to abstract it from windowing systems)
     void ProcessKeyboard( float deltaTime);
 
-    // processes input received from a mouse input system. Expects the offset value in both the x and y direction.
-    void ProcessMouseMovement(float xoffset, float yoffset, bool constrainPitch = true);
-
-    // processes input received from a mouse scroll-wheel event. Only requires input on the vertical wheel-axis
-    void ProcessMouseScroll(float yoffset);
-
-    static void attachCurrentCamera(Camera*);
-
-    static void mouse_button_callback(GLFWwindow* window, int button, int action, int mods);
-    static void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods);
-    static void framebuffer_size_callback(GLFWwindow* window, int width, int height);
-    static void mouse_callback(GLFWwindow* window, double xpos, double ypos);
-    static void scroll_callback(GLFWwindow* window, double xoffset, double yoffset);
+    void mouse_button_callback(GLFWwindow* window, int button, int action, int mods);
+    void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods);
+    void framebuffer_size_callback(GLFWwindow* window, int width, int height);
+    void mouse_callback(GLFWwindow* window, double xpos, double ypos);
+    void scroll_callback(GLFWwindow* window, double xoffset, double yoffset);
 
 protected:
+    // processes input received from a mouse input system. Expects the offset value in both the x and y direction.
+    void _ProcessMouseMovement(float xoffset, float yoffset, bool constrainPitch = true);
 
+    // processes input received from a mouse scroll-wheel event. Only requires input on the vertical wheel-axis
+    void _ProcessMouseScroll(float yoffset);
 
 private:
     // calculates the front vector from the Camera's (updated) Euler Angles
-    void updateCameraVectors();
+    void __updateCameraVectors();
 
     // camera Attributes
     glm::vec3 Position = glm::vec3(0.0f, 0.0f, 3.0f);
@@ -69,7 +65,5 @@ private:
     
 
     Shader *m_basicShader=nullptr;
-
-    static Camera* s_currentCamera;
 };
 #endif
