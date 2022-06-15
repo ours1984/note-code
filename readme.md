@@ -8,6 +8,8 @@
 
 项目[gaames101-note](https://github.com/xiaoqide/gaames101-note)的配套代码
 
+项目[grokking-note](https://github.com/xiaoqide/grokking-note)的配套代码
+
 ## 目录
 
 - [note-code](#note-code)
@@ -30,7 +32,7 @@
 
 [![games101](https://github-readme-stats.vercel.app/api/pin/?username=xiaoqide&repo=games101-note&show_owner)](https://github.com/xiaoqide/games101-note)
 
-[![games101](https://github-readme-stats.vercel.app/api/pin/?username=xiaoqide&repo=games101-note&show_owner)](https://github.com/xiaoqide/grokking-note)
+[![games101](https://github-readme-stats.vercel.app/api/pin/?username=xiaoqide&repo=grokking-note&show_owner)](https://github.com/xiaoqide/grokking-note)
 
 为了教程的纯粹性,把项目配套代码单独列出一个仓库
 
@@ -86,8 +88,8 @@ games101课程的作业解答,每一个文件对应[games101-note](https://githu
 
 图解算法的代码练习,每一个文件对应[grokking-note](https://github.com/xiaoqide/grokking-note)的一篇文章
 
-- [Introduction(github)](grokking-note/grokking-introduction.md)：[二分查找(blog)](https://blog.ours1984.top/posts/grokking-introduction)
-- [Select(github)](grokking-note/grokking-select.md)：[选择排序(blog)](https://blog.ours1984.top/posts/grokking-select)
+- [search(github)](grokking-note/introduction.cpp)：[二分查找(blog)](https://blog.ours1984.top/posts/grokking-introduction)
+- [sort(github)](grokking-note/sort.md)：[选择排序(blog)](https://blog.ours1984.top/posts/grokking-select)
 - [Recursion(github)](grokking-note/grokking-recursion.md)：[递归(blog)](https://blog.ours1984.top/posts/grokking-recursion)
 - [Quick(github)](grokking-note/grokking-quick.md)：[快速排序(blog)](https://blog.ours1984.top/posts/grokking-quick)
 - [Map(github)](grokking-note/grokking-map.md)：[散列表(blog)](https://blog.ours1984.top/posts/grokking-map)
