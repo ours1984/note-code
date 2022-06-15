@@ -71,5 +71,5 @@ static void benchSearch(benchmark::State& state)
     state.SetComplexityN(state.range(0));
 }
 
-BENCHMARK(benchSearch)->RangeMultiplier(10)->Ranges({{1000,10000000},{0,0}})->Complexity();
-BENCHMARK(benchSearch)->RangeMultiplier(10)->Ranges({{1000,10000000},{1,1}})->Complexity();
+//BENCHMARK(benchSearch)->RangeMultiplier(10)->Ranges({{1000,10000000},{0,0}})->Complexity();
+//BENCHMARK(benchSearch)->RangeMultiplier(10)->Ranges({{1000,10000000},{1,1}})->Complexity();
