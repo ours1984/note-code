@@ -5,15 +5,19 @@ cmake_path(GET CMAKE_CURRENT_SOURCE_DIR FILENAME dirname)
 project(${dirname} VERSION 0.1.0)
 
 find_package(benchmark REQUIRED)
+find_package(Eigen3 REQUIRED)
 
 set (dependLib
+    Eigen3::Eigen
     benchmark::benchmark
-    benchmark::benchmark_main
 )
 
 add_executable(${dirname}
     search.cpp
     sort.cpp
+    graph.cpp
+    graphtest.cpp
+    benchmark.cpp
 )
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})

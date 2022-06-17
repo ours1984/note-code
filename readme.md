@@ -90,10 +90,10 @@ games101课程的作业解答,每一个文件对应[games101-note](https://githu
 
 - [search(github)](grokking-note/introduction.cpp)：[二分查找(blog)](https://blog.ours1984.top/posts/grokking-introduction/)
 - [sort(github)](grokking-note/sort.cpp)：[选择排序(blog)](https://blog.ours1984.top/posts/grokking-select/)
-- [Recursion(github)](grokking-note/grokking-recursion.md)：[递归(blog)](https://blog.ours1984.top/posts/grokking-recursion/)
+- [Recursion(github)](grokking-note/graph.md)：[递归(blog)](https://blog.ours1984.top/posts/grokking-recursion/)
 - [Quick(github)](grokking-note/sort.cpp)：[快速排序(blog)](https://blog.ours1984.top/posts/grokking-quick/)
 - [Map(github)](grokking-note/grokking-map.md)：[散列表(blog)](https://blog.ours1984.top/posts/grokking-map/)
-- [BFS(github)](grokking-note/grokking-bfs.md)：[广度优先搜索(blog)](https://blog.ours1984.top/posts/grokking-bfs/)
+- [BFS(github)](grokking-note/testgraph.cpp)：[广度优先搜索(blog)](https://blog.ours1984.top/posts/grokking-bfs/)
 
 ### third
 

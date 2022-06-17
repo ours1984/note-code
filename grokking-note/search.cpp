@@ -49,6 +49,7 @@ static unsigned long BinarySeach(const std::vector<long>& data,unsigned long val
 
 static void benchSearch(benchmark::State& state)
 {
+    state.PauseTiming(); // 暂停计时
     auto data = GenerateData(state.range(0));
     auto method = ForceSeach;
 
@@ -64,6 +65,7 @@ static void benchSearch(benchmark::State& state)
         break;
     }
 
+    state.ResumeTiming(); // 暂停计时
     for ([[maybe_unused]] auto _ : state) {
         auto random_number = std::experimental::randint(0l, state.range(0));
         benchmark::DoNotOptimize(method(data,random_number));
