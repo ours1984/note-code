@@ -5,4 +5,4 @@
 
 [submodule "third/softrender"]
 	path = third/softrender
-	url = https://github.com/xiaoqide/soft-render.git
+	url = https://github.com/ours1984/soft-render.git
