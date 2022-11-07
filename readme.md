@@ -6,7 +6,7 @@
 
 项目[opengl-note](https://github.com/ours1984/opengl-note)的配套代码
 
-项目[gaames101-note](https://github.com/ours1984/gaames101-note)的配套代码
+项目[games101-note](https://github.com/ours1984/games101-note)的配套代码
 
 项目[grokking-note](https://github.com/ours1984/grokking-note)的配套代码
 
